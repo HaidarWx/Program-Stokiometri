@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Program Stokiometri</title>
+    <link rel="shortcut icon" href="Image/icon.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="data1.js" />
+    <link rel="stylesheet" href="style1.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+  </head>
+
+  <body>
+    <main>
+      <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #333">
+        <div class="container-fluid justify-content-center">
+          <h4 class="text-light header">Program Stokiometri Kimia</h4>
+        </div>
+      </nav>
+
+      <!-- Mencari Mol -->
+
+      <div class="head d-flex bg-warning">
+        <h1 class="mx-auto">Mencari Mol (n)</h1>
+      </div>
+
+      <div class="container-fluid ps-2 ps-lg-4 pt-2 pt-lg-0">
+        <div class="row d-flex">
+          <div class="col-lg-2 col-md-11 offset-lg-2 offset-md-1">
+            <div class="mol mt-lg-4">
+              <div class="judul d-flex">
+                <h4 class="mx-auto font-dark">Massa dan Mr Diketahui</h4>
+              </div>
+
+              <form name="diketMassa" class="d-flex isi justify-content-center">
+                <p class="ditanya me-2 fw-bold font-dark">Mol =</p>
+                <input type="text" name="massa" placeholder="Massa (gr)" />
+                <p class="mx-4 operasi">:</p>
+                <input type="text" name="mr" placeholder="Mr" />
+                <button type="reset" class="btn btn-warning mx-2 fw-bold font-dark" onclick="reset1()">Hapus</button>
+              </form>
+
+              <div class="hasil d-flex">
+                <div class="ditanya me-2 fw-bold font-dark" style="margin-left: 7px">Mol =</div>
+                <div id="hasilMol" class="hasilnya font-dark"></div>
+              </div>
+              <div class="d-flex">
+                <button type="button" onclick="programMol1()" class="btn-warning btn mx-auto fw-bold mt-3 font-light" style="width: 200px">Ok</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mol | M x V -->
+          <div class="col-lg-4 col-md-11 offset-lg-2">
+            <div class="mol mt-lg-4">
+              <div class="judul d-flex">
+                <h4 class="mx-auto font-dark">Molaritas dan Volume Diketahui</h4>
+              </div>
+
+              <form name="diketMolaritas" class="d-flex isi justify-content-center">
+                <p class="ditanya me-2 fw-bold font-dark">Mol =</p>
+                <input type="text" name="molaritas" placeholder="Molaritas" />
+                <p class="mx-4 operasi">x</p>
+                <input type="text" name="volume" placeholder="Volume (L)" />
+                <button type="reset" class="btn btn-warning mx-2 fw-bold font-dark" onclick="reset2()">Hapus</button>
+              </form>
+
+              <div class="hasil d-flex">
+                <div class="ditanya me-2 fw-bold font-dark" style="margin-left: 4px">Mol =</div>
+                <div id="hasilMol2" class="hasilnya font-dark"></div>
+              </div>
+              <div class="d-flex">
+                <button type="button" onclick="programMol2()" class="btn-warning btn mx-auto fw-bold mt-3 font-light" style="width: 200px">Ok</button>
+              </div>
+            </div>
+          </div>
+          <!--  -->
+        </div>
+      </div>
+      <!-- Molaritas dan Volume -->
+      <div class="container-fluid ps-2 ps-lg-4 pt-2 pt-lg-0">
+        <div class="row d-flex">
+          <div class="col-lg-2 col-md-11 offset-lg-2 offset-md-1">
+            <div class="mol mt-lg-4">
+              <div class="judul d-flex">
+                <h4 class="mx-auto font-dark">Molaritas dan Volume Diketahui</h4>
+              </div>
+
+              <form name="diketVSTP" class="d-flex isi justify-content-center">
+                <p class="ditanya me-2 fw-bold font-dark">Mol =</p>
+                <input type="text" name="vstp" placeholder="VSTP" />
+                <p class="mx-4 operasi">:</p>
+                <p style="background-color: rgb(250, 224, 30); font-size: 16px; width: 80px; height: 40px; display: flex">
+                  <b style="align-self: center">22.4</b>
+                </p>
+                <button type="reset" class="btn btn-warning mx-2 fw-bold font-dark" onclick="reset3()">Hapus</button>
+              </form>
+
+              <div class="hasil d-flex">
+                <div class="ditanya me-2 fw-bold font-dark" style="margin-left: 7px">Mol =</div>
+                <div id="hasilMol3" class="hasilnya font-dark"></div>
+              </div>
+              <div class="d-flex">
+                <button type="button" onclick="programMol3()" class="btn-warning btn mx-auto fw-bold mt-3 font-light" style="width: 200px">Ok</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mol | M x V -->
+          <div class="col-lg-2 col-md-11 offset-lg-2 offset-md-1">
+            <div class="mol mt-lg-4">
+              <div class="judul d-flex">
+                <h4 class="mx-auto font-dark">Jumlah Partikel Diketahui</h4>
+              </div>
+
+              <form name="diketJP" class="d-flex isi justify-content-center">
+                <p class="ditanya me-2 fw-bold font-dark">Mol =</p>
+                <input class="input1" type="text" name="jp" placeholder="JP" />
+                <p class="mx-4 operasi">:</p>
+                <p style="background-color: rgb(250, 224, 30); font-size: 16px; width: 90px; height: 40px; display: flex">
+                  <b style="align-self: center">6.02 x 10 <sup>23</sup></b>
+                </p>
+                <button type="reset" class="btn btn-warning mx-2 fw-bold font-dark" onclick="reset4()">Hapus</button>
+              </form>
+
+              <div class="hasil d-flex">
+                <div class="ditanya me-2 fw-bold font-dark" style="margin-left: 3px">Mol =</div>
+                <div id="hasilMol4" class="font-dark"></div>
+              </div>
+              <div class="d-flex">
+                <button type="button" onclick="programMol4()" class="btn-warning btn mx-auto fw-bold mt-3 font-light" style="width: 200px">Ok</button>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+        </div>
+      </div>
+      <!-- Mencari Mol -->
+      <div class="container-fluid ps-3 ps-lg-5 pt-2 pt-lg-0">
+        <div class="row d-flex col-12 ps-lg-3">
+          <div class="col-lg-6 col-md-11 offset-lg-2 offset-md-1">
+            <div class="mol-stp mt-lg-4">
+              <div class="judul d-flex">
+                <h4 class="mx-auto font-dark">Volume Diketahui (Non-STP)</h4>
+              </div>
+
+              <form name="diketVNonSTP" class="d-flex isi-1 justify-content-center mx-auto">
+                <p class="ditanya me-2 fw-bold font-dark">Mol =</p>
+                <input type="text" name="tekanan" placeholder="P (atm)" />
+                <p class="mx-4 operasi">X</p>
+                <input type="text" name="volumeX" placeholder="Volume (L)" />
+                <p class="mx-4 operasi">:</p>
+                <p style="background-color: rgb(250, 224, 30); font-size: 16px; width: 80px; height: 40px; display: flex">
+                  <b style="align-self: center">0.082</b>
+                </p>
+                <p class="mx-4 operasi">X</p>
+                <input type="text" name="suhuX" placeholder="T(K)" />
+                <button type="reset" class="btn btn-warning mx-2 fw-bold font-dark" onclick="reset5()">Hapus</button>
+              </form>
+
+              <div class="hasil-1 d-flex">
+                <div class="ditanya me-2 fw-bold font-dark" style="margin-left: 57px">Mol =</div>
+                <div id="hasilMol5" class="hasilnya font-dark"></div>
+              </div>
+              <div class="d-flex">
+                <button type="button" onclick="programMol5()" class="btn-warning btn mx-auto fw-bold mt-3 font-light" style="width: 200px">Ok</button>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+        </div>
+      </div>
+
+      <!--  -->
+      <div class="head d-flex bg-warning mt-4">
+        <h1 class="mx-auto">Mencari Molaritas</h1>
+      </div>
+      <!--  -->
+
+      <div class="container-fluid ps-2 ps-lg-5 pt-2 pt-lg-0">
+        <div class="row d-flex ps-lg-3">
+          <div class="col-lg-6 col-md-11 offset-lg-2 offset-md-1">
+            <div class="molaritas mt-lg-4">
+              <div class="judul d-flex">
+                <h4 class="mx-auto font-dark">Molaritas (M)</h4>
+              </div>
+
+              <form name="Molaritas" class="d-flex isi-2 justify-content-center">
+                <p class="ditanya me-2 fw-bold font-dark">Molaritas =</p>
+                <input type="text" name="molMolaritas" placeholder="Mol" />
+                <p class="mx-4 operasi">:</p>
+                <input type="text" name="volumeMolaritas" placeholder="Volume (L)" />
+                <button type="reset" class="btn btn-warning mx-2 fw-bold font-dark" onclick="reset6()">Hapus</button>
+              </form>
+
+              <div class="hasil-1 d-flex">
+                <div class="ditanya me-2 fw-bold font-dark" style="margin-left: 173px">Molaritas =</div>
+                <div id="hasilMol6" class="hasilnya font-dark"></div>
+              </div>
+              <div class="d-flex">
+                <button type="button" onclick="programMol6()" class="btn-warning btn mx-auto fw-bold mt-3 font-light" style="width: 200px">Ok</button>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+        </div>
+      </div>
+      <!--  -->
+      <div class="head d-flex bg-warning mt-4">
+        <h1 class="mx-auto">Mencari Jumlah Partikel (JP)</h1>
+      </div>
+      <!--  -->
+      <!--  -->
+      <div class="container-fluid ps-2 ps-lg-5 pt-2 pt-lg-0">
+        <div class="row d-flex ps-lg-3">
+          <div class="col-lg-6 col-md-11 offset-lg-2 offset-md-1">
+            <div class="molaritas mt-lg-4">
+              <div class="judul d-flex">
+                <h4 class="mx-auto font-dark">Jumlah Partikel (JP)</h4>
+              </div>
+
+              <form name="JumlahPartikel" class="d-flex isi-2 justify-content-center">
+                <p class="ditanya me-2 fw-bold font-dark">Jumlah Partikel =</p>
+                <input type="text" name="molJP" placeholder="Mol" />
+                <p class="mx-4 operasi">X</p>
+                <p style="background-color: rgb(250, 224, 30); font-size: 16px; width: 100px; height: 40px; display: flex">
+                  <b style="align-self: center">6.02 X 10<sup>23</sup></b>
+                </p>
+
+                <button type="reset" class="btn btn-warning mx-2 fw-bold font-dark" onclick="reset7()">Hapus</button>
+              </form>
+
+              <div class="hasil-1 d-flex">
+                <div class="ditanya me-2 fw-bold font-dark" style="margin-left: 121px">Jumlah Partikel =</div>
+                <div id="hasilMol7" class="hasilnya font-dark"></div>
+              </div>
+              <div class="d-flex">
+                <button type="button" onclick="programMol7()" class="btn-warning btn mx-auto fw-bold mt-3 font-light" style="width: 200px">Ok</button>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+        </div>
+      </div>
+      <!--  -->
+      <div class="head d-flex bg-warning mt-4">
+        <h1 class="mx-auto">Mencari VSTP (L)</h1>
+      </div>
+      <!--  -->
+      <div class="container-fluid ps-2 ps-lg-5 pt-2 pt-lg-0">
+        <div class="row d-flex ps-lg-3">
+          <div class="col-lg-6 col-md-11 offset-lg-2 offset-md-1">
+            <div class="molaritas mt-lg-4">
+              <div class="judul d-flex">
+                <h4 class="mx-auto font-dark">VSTP (L)</h4>
+              </div>
+
+              <form name="vstp" class="d-flex isi-2 justify-content-center">
+                <p class="ditanya me-2 fw-bold font-dark">VSTP =</p>
+                <input type="text" name="molVSTP" placeholder="Mol" />
+                <p class="mx-4 operasi">X</p>
+                <p style="background-color: rgb(250, 224, 30); font-size: 16px; width: 80px; height: 40px; display: flex">
+                  <b style="align-self: center">22.4</b>
+                </p>
+
+                <button type="reset" class="btn btn-warning mx-2 fw-bold font-dark" onclick="reset8()">Hapus</button>
+              </form>
+
+              <div class="hasil-1 d-flex">
+                <div class="ditanya me-2 fw-bold font-dark" style="margin-left: 194px">VSTP =</div>
+                <div id="hasilMol8" class="hasilnya font-dark"></div>
+              </div>
+              <div class="d-flex">
+                <button type="button" onclick="programMol8()" class="btn-warning btn mx-auto fw-bold mt-3 font-light" style="width: 200px">Ok</button>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+        </div>
+      </div>
+      <!--  -->
+      <div class="head d-flex bg-warning mt-4">
+        <h1 class="mx-auto">Mencari Massa (Gr)</h1>
+      </div>
+      <!--  -->
+      <div class="container-fluid ps-2 ps-lg-5 pt-2 pt-lg-0">
+        <div class="row d-flex ps-lg-3">
+          <div class="col-lg-6 col-md-11 offset-lg-2 offset-md-1">
+            <div class="molaritas mt-lg-4">
+              <div class="judul d-flex">
+                <h4 class="mx-auto font-dark">Massa (Gr)</h4>
+              </div>
+
+              <form name="massa" class="d-flex isi-2 justify-content-center">
+                <p class="ditanya me-2 fw-bold font-dark">Massa =</p>
+                <input type="text" name="molMassa" placeholder="Mol" />
+                <p class="mx-4 operasi">X</p>
+                <input type="text" name="mrMassa" placeholder="Mr" />
+                <button type="reset" class="btn btn-warning mx-2 fw-bold font-dark" onclick="reset9()">Hapus</button>
+              </form>
+
+              <div class="hasil-1 d-flex">
+                <div class="ditanya me-2 fw-bold font-dark" style="margin-left: 188px">Massa =</div>
+                <div id="hasilMol9" class="hasilnya font-dark"></div>
+              </div>
+              <div class="d-flex">
+                <button type="button" onclick="programMol9()" class="btn-warning btn mx-auto fw-bold mt-3 font-light" style="width: 200px">Ok</button>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+        </div>
+      </div>
+    </main>
+    <script src="data1.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
