@@ -1,7 +1,7 @@
 main {
   background-color: #333;
   width: 100%;
-  height: 2000px;
+  height: 2670px;
 }
 
 .header {
@@ -79,4 +79,32 @@ input {
 }
 #hasilMol4 {
   font-size: 21px;
+}
+
+.fontY {
+  color: white;
+  font-family: Poppins, sans-serif;
+}
+
+footer h6 {
+  font-size: 30px;
+}
+.footer-isi {
+  width: 200px;
+}
+.html-logo {
+  width: 50px;
+}
+.css-logo {
+  width: 56px;
+}
+.bootstrap-logo {
+  width: 86px;
+}
+.js-logo {
+  width: 55px;
+}
+.bi-star {
+  color: white;
+  font-size: 28px;
 }

@@ -138,56 +138,90 @@ function programMol9() {
 }
 
 function reset1() {
-  let hasilbaru = "0 Mol";
+  let hasilbaru = "";
   let hasilMol = document.getElementById("hasilMol");
   console.log("on");
   return (hasilMol.innerHTML = hasilbaru);
 }
 function reset2() {
-  let hasilbaru = "0 Mol";
+  let hasilbaru = "";
   let hasilMol2 = document.getElementById("hasilMol2");
   console.log("on");
   return (hasilMol2.innerHTML = hasilbaru);
 }
 function reset3() {
-  let hasilbaru = "0 Mol";
+  let hasilbaru = "";
   let hasilMol3 = document.getElementById("hasilMol3");
   console.log("on");
   return (hasilMol3.innerHTML = hasilbaru);
 }
 function reset4() {
-  let hasilbaru = "0 Mol";
+  let hasilbaru = "";
   let hasilMol4 = document.getElementById("hasilMol4");
   console.log("on");
   return (hasilMol4.innerHTML = hasilbaru);
 }
 function reset5() {
-  let hasilbaru = "0 Mol";
+  let hasilbaru = "";
   let hasilMol5 = document.getElementById("hasilMol5");
   console.log("on");
   return (hasilMol5.innerHTML = hasilbaru);
 }
 function reset6() {
-  let hasilbaru = "0";
+  let hasilbaru = "";
   let hasilMol6 = document.getElementById("hasilMol6");
   console.log("on");
   return (hasilMol6.innerHTML = hasilbaru);
 }
 function reset7() {
-  let hasilbaru = "0";
+  let hasilbaru = "";
   let hasilMol7 = document.getElementById("hasilMol7");
   console.log("on");
   return (hasilMol7.innerHTML = hasilbaru);
 }
 function reset8() {
-  let hasilbaru = "0 L";
+  let hasilbaru = "";
   let hasilMol8 = document.getElementById("hasilMol8");
   console.log("on");
   return (hasilMol8.innerHTML = hasilbaru);
 }
 function reset9() {
-  let hasilbaru = "0 Gr";
+  let hasilbaru = "";
   let hasilMol9 = document.getElementById("hasilMol9");
   console.log("on");
   return (hasilMol9.innerHTML = hasilbaru);
 }
+
+//CONTACT
+
+const scriptURL = "https://script.google.com/macros/s/AKfycbzPcXejOXyZLJbtXIHiNZn2pk0Ka2TBqRma3ehKAonQ-GsT_lYoFc4ipbbVvmKYvbwO/exec";
+const form = document.forms["me-contact-form"];
+const btnKirim = document.querySelector(".btn-kirim");
+const btnLoading = document.querySelector(".btn-loading");
+const myAlert = document.querySelector(".my-alert");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  //ketika tombol submit di klik
+  //tampilkan tombol loading, hilangkan tombol kirim
+
+  btnLoading.classList.toggle("d-none");
+  btnKirim.classList.toggle("d-none");
+
+  fetch(scriptURL, { method: "POST", body: new FormData(form) })
+    .then((response) => {
+      //tampilkan tombol kirim, hilangkan tombol loading
+
+      btnLoading.classList.toggle("d-none");
+      btnKirim.classList.toggle("d-none");
+
+      //tampilkan alert
+      myAlert.classList.toggle("d-none");
+
+      //hapus form
+
+      form.reset();
+      console.log("Success!", response);
+    })
+    .catch((error) => console.error("Error!", error.message));
+});
